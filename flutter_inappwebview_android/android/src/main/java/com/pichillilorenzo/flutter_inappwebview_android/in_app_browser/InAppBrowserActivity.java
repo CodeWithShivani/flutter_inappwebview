@@ -18,6 +18,11 @@ import android.webkit.WebView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.SearchView;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.core.graphics.Insets;
+import androidx.activity.EdgeToEdge;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -114,6 +119,11 @@ public class InAppBrowserActivity extends AppCompatActivity implements InAppBrow
     windowId = b.getInt("windowId");
 EdgeToEdge.enable(this);
     setContentView(R.layout.activity_web_view);
+    ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+                Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+                v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+                return insets;
+            });
 
     WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
     toolbar = findViewById(R.id.toolbar);
