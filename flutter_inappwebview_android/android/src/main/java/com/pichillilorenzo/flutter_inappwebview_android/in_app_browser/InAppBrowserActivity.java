@@ -112,7 +112,7 @@ public class InAppBrowserActivity extends AppCompatActivity implements InAppBrow
     customSettings.parse(settingsMap);
 
     windowId = b.getInt("windowId");
-
+EdgeToEdge.enable(this);
     setContentView(R.layout.activity_web_view);
 
     WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
